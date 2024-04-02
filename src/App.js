@@ -1,20 +1,23 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route} from "react-router-dom";
-import Login from './pages/Login.page';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard.component";
-import "./index.css"
+import { Login, Register } from "./pages";
+import "./index.css";
+import PrivateRoute from "./routes/Private.routes";
 
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Routes>
-          <Route path='/' element={ <Login /> } />
-          <Route path='/auth/dashboard' element={ <Dashboard /> } />
+          <Route path={"/register"} element={<Register />} />
+          <Route path={"/"} element={<Login />}  />
+          {/* <PrivateRoute component={Dashboard} path="/dashboard"  /> */}
+          <Route path={"/dashboard"} element={<Dashboard />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </>
-  )
-}
-
-export default App
+  );
+};
+export default App;

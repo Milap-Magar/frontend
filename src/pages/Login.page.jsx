@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
-import "./Page.css";
+import "./Login.css";
 
 import image from "../assets/login.png";
 import Image from "../components/A-Componenets/Image";
 import { IoMdLogIn } from "react-icons/io";
 
-
 const Login = () => {
   const [err, setErr] = useState("");
   const [showPwd, setShowPwd] = useState("password");
   const [isChecked, setIsChecked] = useState(false);
-  
-  // const loginURL = "/";
-
-  const [values, setValues] = useState({
-    symbol: "",
-    password: "",
-  });
 
   const navigate = useNavigate();
-  axios.defaults.withCredentials = true;
+  const handleNavigate = () => {
+    navigate("/register");
+  };
+
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+console.log(values);
+  // axios.defaults.withCredentials = true;
 
   const handleShowPassword = () => {
     setShowPwd((showPwd) => (showPwd === "password" ? "text" : "password"));
@@ -30,37 +31,18 @@ const Login = () => {
 
   const handlesubmit = async (e) => {
     e.preventDefault();
-    // try {
-    //   const response = await axios.post(loginURL, values);
-    //   console.log("🚀 ~ response ~ axios:", response);
-      
-    //     if (response.data.loginStatus) {
-    //       navigate("/auth/dashboard");
-    //     } else {
-    //       setErr(response.data.Error);
-    //     }
-    // } catch (error) {
-    //   if (!error.response) {
-    //     setErr("No Sever Response");
-    //   } else if (error.response.status === 409) {
-    //     setErr("Username unauthorized");
-    //   } else {
-    //     setErr("Regristration Failed");
-    //   }
-    // }
-     await axios
-        .post("http://localhost:8080/", values)
-        .then((result) => {
-          // return console.log("🚀 ~ handlesubmit ~ result:", result);
-          if (result.data.loginStatus) {
-            navigate("/auth/dashboard");
-          }else{
-            setErr(result.data.Error);
-          }
-        })
-        .catch((err) => {
-          return console.log("🚀 ~ handlesubmit ~ err:", err);
-        });
+    await axios
+      .post("http://localhost:8080/login", values)
+      .then((response) => {
+        if (response.status === 200) {
+          navigate("/dashboard");
+        } else {
+          setErr(response.data.Error);
+        }
+      })
+      .catch((err) => {
+        return console.log("🚀 ~ handlesubmit ~ err:", err);
+      });
   };
 
   return (
@@ -87,13 +69,13 @@ const Login = () => {
                 Complain Management System
               </h1>
               {/* symbol section */}
-              <label htmlFor="symbol">Enter your Symbol Number:</label>
+              <label htmlFor="Email">Enter your Email:</label>
 
               <input
-                placeholder="Symbol Number"
-                type="number"
+                placeholder="Enter your Email"
+                type="email"
                 onChange={(e) =>
-                  setValues({ ...values, symbol: e.target.value })
+                  setValues({ ...values, email: e.target.value })
                 }
                 className={`text-sm p-[4px] w-[250px] md:w-[300px] rounded-sm border border-slate-950 bg-transparent font-epic font-extrabold placeholder-slate-900`}
               />
@@ -122,6 +104,13 @@ const Login = () => {
                   className={`border rounded-xl bg-afno-300 m-[10px] md:m-3 py-1 px-3 flex border-slate-800 hover:bg-black hover:text-white font-black font-epic text-lg`}
                 >
                   Login
+                  <IoMdLogIn className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={handleNavigate}
+                  className={`border rounded-xl bg-afno-300 m-[10px] md:m-3 py-1 px-3 flex border-slate-800 hover:bg-black hover:text-white font-black font-epic text-lg`}
+                >
+                  Register
                   <IoMdLogIn className="w-6 h-6" />
                 </button>
               </div>
