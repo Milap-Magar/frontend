@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {Dashboard, Complain} from "./components/";
 import { Login, Register } from "./pages";
 import "./index.css";
-import PrivateRoute from "./routes/Private.routes";
+// import PrivateRoute from "./routes/Private.routes";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -15,7 +15,8 @@ const App = () => {
           <Route path={"/"} element={<Login />}  />
           {/* <PrivateRoute component={Dashboard} path="/dashboard"  /> */}
           <Route path={"/dashboard"} element={<Dashboard />} />
-          <Route path={"/Complain"} element={<Complain />} />
+          <Route path={"/complain"} element={<Complain />} />
+          {/* <Route path={"/form"} element={<Form />} /> */}
         </Routes>
       </Router>
     </>
