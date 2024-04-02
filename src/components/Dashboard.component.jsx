@@ -4,6 +4,9 @@ import Button from "./A-Componenets/Button";
 import "./style.css";
 
 const Dashboard = () => {
+  function handleComplain(){
+    return
+  }
   return (
     <>
       <div className="flex bg-slate-200 h-screen w-full body">
@@ -24,9 +27,9 @@ const Dashboard = () => {
             <div className="flex-1">
               <ul className="py-1 px-3 space-y-5 text-sm flex flex-col justify-start items-center">
                 <li className="rounded-sm">
-                  <a href="#" className="flex items-center p-2 space-x-3">
+                  <div href="#" className="flex items-center p-2 space-x-3">
                     <Button />
-                  </a>
+                  </div>
                 </li>
                 <li className="rounded-sm">
                   <a
