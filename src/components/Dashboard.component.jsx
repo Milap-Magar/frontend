@@ -4,9 +4,6 @@ import Button from "./A-Componenets/Button";
 import "./style.css";
 
 const Dashboard = () => {
-  function handleComplain(){
-    return
-  }
   return (
     <>
       <div className="flex bg-slate-200 h-screen w-full body">
