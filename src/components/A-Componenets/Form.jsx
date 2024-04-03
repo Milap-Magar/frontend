@@ -23,7 +23,6 @@ const Form = () => {
         </div>
 
         <div className="flex justify-between px-10">
-
           <div className="flex flex-wrap mb-6">
             <div className="w-full px-3">
               <label

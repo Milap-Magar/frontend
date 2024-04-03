@@ -108,7 +108,7 @@ console.log(values);
                 </button>
                 <button
                   onClick={handleNavigate}
-                  className={`border rounded-xl bg-afno-300 m-[10px] md:m-3 py-1 px-3 flex border-slate-800 hover:bg-black hover:text-white font-black font-epic text-lg`}
+                  className={` bg-afno-300 m-[10px] md:m-3 py-1 px-3 flex border-slate-800 hover:text-white font-black font-epic text-lg`}
                 >
                   Register
                   <IoMdLogIn className="w-6 h-6" />
