@@ -7,7 +7,7 @@ const Image = () => {
         <img
           src={bg_image}
           alt=""
-          className="w-full h-screen  absolute object-fill z-0"
+          className="w-full h-screen absolute object-fill z-0"
         />
     </>
   );

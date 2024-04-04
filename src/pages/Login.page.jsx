@@ -7,7 +7,7 @@ import image from "../assets/login.png";
 import Image from "../components/A-Componenets/Image";
 import { IoMdLogIn } from "react-icons/io";
 
-const Login = () => {
+const LoginPage = () => {
   const [err, setErr] = useState("");
   const [showPwd, setShowPwd] = useState("password");
   const [isChecked, setIsChecked] = useState(false);
@@ -137,4 +137,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

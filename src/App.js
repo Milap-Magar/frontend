@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { User, Complain, Admin } from "./components/";
-import { Login, Register } from "./pages";
+import { Register } from "./pages";
+import Login from "./pages/Login";
 import "./index.css";
 import PrivateRoute from "./routes/Private.routes";
 
@@ -11,11 +12,11 @@ const App = () => {
         <Routes>
           <Route path={"/"} element={<Login />} />
           <Route path={"/register"} element={<Register />} />
-            <Route path={"/dashboard"} element={<Admin />} />
 
           {/* Admin Routes */}
           <Route path="/admin" element={<PrivateRoute />}>
             <Route path={"complain"} element={<Complain />} />
+            <Route path={"dashboard"} element={<Admin />} />
           </Route>
 
           {/* User Routes */}

@@ -14,9 +14,11 @@ const Register = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    dob: "",
     name: "",
     phone: "",
     address: "",
+    role: "isUser",
     errors: {},
   });
 
@@ -42,9 +44,14 @@ const Register = () => {
       const response = await axios.post("http://localhost:8080/register", {
         email: formData.email,
         password: formData.password,
+        symbol: formData.symbol,
+        dob: formData.dob,
         name: formData.name,
         phone: formData.phone,
         address: formData.address,
+        faculty: formData.faculty,
+        semester: formData.semester,
+        role: "isUsers",
       });
 
       if (response.status === 200) {
@@ -60,7 +67,7 @@ const Register = () => {
     () => (
       <>
         <input
-          type="text"
+          type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
@@ -73,6 +80,14 @@ const Register = () => {
         {formData.errors.email && (
           <div className="text-red-500 mb-2">{formData.errors.email}</div>
         )}
+        <input
+          type="number"
+          name="symbol"
+          value={formData.symbol}
+          onChange={handleChange}
+          placeholder="Symbol"
+          className="w-full px-4 py-2 mb-4 border rounded"
+        />
         <input
           type="password"
           name="password"
@@ -97,6 +112,15 @@ const Register = () => {
           required
         />
         <input
+          type="date"
+          id="dob"
+          name="dob"
+          value={formData.dob}
+          onChange={handleChange}
+          className="w-full px-4 py-2 mb-4 border rounded"
+          required
+        />
+        <input
           type="number"
           name="phone"
           value={formData.phone}
@@ -112,20 +136,59 @@ const Register = () => {
           placeholder="Address"
           className="w-full px-4 py-2 mb-4 border rounded"
         />
+        <label htmlFor="faculty">Choose a Faculty:</label>
+        <select
+          name="faculty"
+          className="w-full px-4 py-2 mb-4 border rounded"
+          value={formData.faculty}
+          onChange={handleChange}
+          required
+        >
+          <option value="" disabled>
+            Select Semester
+          </option>
+          <option value="engineering">Engineering</option>
+          <option value="medicine">Medicine</option>
+          <option value="science">Science</option>
+          <option value="arts">Arts</option>
+          <option value="business">Business</option>
+          <option value="law">Law</option>
+          <option value="humanities">Humanities</option>
+        </select>
+        <label htmlFor="sem">Choose a Semester:</label>
+        <select
+          name="semester"
+          className="w-full px-4 py-2 mb-4 border rounded"
+          required
+          value={formData.semester}
+          onChange={handleChange}
+        >
+          <option value="" disabled>
+            Select Semester
+          </option>
+          <option value="1">Semester 1</option>
+          <option value="2">Semester 2</option>
+          <option value="3">Semester 3</option>
+          <option value="4">Semester 4</option>
+          <option value="5">Semester 5</option>
+          <option value="6">Semester 6</option>
+          <option value="7">Semester 7</option>
+          <option value="8">Semester 8</option>
+        </select>
       </>
     ),
     [formData, handleChange]
   );
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center">
+    <div className="h-screen w-full flex items-center justify-center">
       <Image />
       <div className="bg-white rounded shadow-md">
         <form
           onSubmit={handleSubmit}
-          className="bg-transparent w-[50vh] md:w-[500px] px-10 py-1 rounded-lg shadow-xl shadow-slate-800"
+          className="bg-transparent h-screen w-[50vh] md:w-[500px] px-10 py-1 rounded-lg shadow-xl shadow-slate-800"
         >
-          <img src={loginImg} alt="login/image" className="px-6" />
+          {/* <img src={loginImg} alt="login/image" className="px-6 w-10 h-10" /> */}
           <h2 className="text-2xl text-slate-900 font-jet-mono text-center  py-10">
             Register Page
           </h2>

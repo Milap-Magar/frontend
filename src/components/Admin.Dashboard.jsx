@@ -4,6 +4,7 @@ import "./style.css";
 import Analytics from "./Analysis";
 import Settings from "./Settings";
 import Logout from "./Logout";
+import Users from "./Users";
 
 const Admin = () => {
   return (
@@ -13,19 +14,24 @@ const Admin = () => {
           <figure>
             <img
               src={logo}
-              alt="logo/image"
+              alt="logo"
               className={`logo w-full h-[10vh]`}
             />
           </figure>
 
           <div className="space-y-6">
-            <div className="py-10 px-4 flex justify-center items-center">
-              <h2 className="text-lg font-bold">
+            <div className="py-10 flex justify-center items-center">
+              <h2 className="text-xl font-bold">
                 <a href="/dashboard">Admin Dashboard</a>
               </h2>
             </div>
             <div className="flex-1">
               <ul className="gap-5 space-y-5 text-sm flex flex-col justify-start items-center">
+              <li>
+                  <a href="/analytics">
+                    <Users />
+                  </a>
+                </li>
                 <li>
                   <a href="/analytics">
                     <Analytics />

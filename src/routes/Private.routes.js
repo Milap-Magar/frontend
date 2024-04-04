@@ -12,16 +12,19 @@ const PrivateRoute = () => {
         if (!token) {
           throw new Error("No token found");
         }
-        const response = await fetch("http://localhost:8080/api/loggedin", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          `http://localhost:8080/api/loggedin?token=${token}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
         if (response.status === 200) {
           setLoggedIn(true);
         } else {
+          console.error("Error checking login status:", response.statusText);
           setLoggedIn(false);
         }
       } catch (error) {
@@ -35,14 +38,10 @@ const PrivateRoute = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>; 
   }
 
-  return (
-    <>
-      (loggedIn) ? <Outlet /> : <Navigate to={"/"} />
-    </>
-  );
+  return <>{loggedIn ? <Outlet /> : <Navigate to={"/"} />}</>;
 };
 
 export default PrivateRoute;
