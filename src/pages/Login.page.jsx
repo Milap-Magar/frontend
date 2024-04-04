@@ -38,7 +38,7 @@ console.log(values);
         localStorage.setItem('token', token);
         console.log(token)
         if (response.status === 200) {
-          navigate("/admin/dashboard");
+          navigate("/user/dashboard");
         } else {
           setErr(response.data.Error);
         }
