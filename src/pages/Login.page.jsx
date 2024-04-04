@@ -21,8 +21,9 @@ const Login = () => {
     email: "",
     password: "",
   });
-console.log(values);
-  // axios.defaults.withCredentials = true;
+// console.log(values);
+
+  axios.defaults.withCredentials = true;
 
   const handleShowPassword = () => {
     setShowPwd((showPwd) => (showPwd === "password" ? "text" : "password"));
@@ -35,7 +36,7 @@ console.log(values);
       .post("http://localhost:8080/login", values)
       .then((response) => {
         if (response.status === 200) {
-          navigate("/dashboard");
+          navigate("/admin/dashboard");
         } else {
           setErr(response.data.Error);
         }

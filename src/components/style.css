@@ -2,12 +2,6 @@
     mix-blend-mode: multiply;
 }
 a:hover{
-    color: red;
-    animation: color-change 1s infinite;
+    color: rgb(148, 143, 143);
 }
 
-@keyframes color-change {
-    0% { color: red; }
-    50% { color: blue; }
-    100% { color: greenyellow; }
-  }
