@@ -21,8 +21,8 @@ const Login = () => {
     email: "",
     password: "",
   });
-console.log(values);
-  // axios.defaults.withCredentials = true;
+  // console.log(values);
+  axios.defaults.withCredentials = true;
 
   const handleShowPassword = () => {
     setShowPwd((showPwd) => (showPwd === "password" ? "text" : "password"));
@@ -30,15 +30,22 @@ console.log(values);
   };
 
   const handlesubmit = async (e) => {
+    const axiosConfig = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    };
+
     e.preventDefault();
     await axios
-      .post("http://localhost:8080/login", values)
+      .post("http://localhost:8080/login", values, axiosConfig)
       .then((response) => {
         const { token } = response.data;
-        localStorage.setItem('token', token);
-        console.log(token)
+        localStorage.setItem("token", token);
+        console.log(token);
         if (response.status === 200) {
-          navigate("/admin/dashboard");
+          navigate("/user/dashboard");
         } else {
           setErr(response.data.Error);
         }
