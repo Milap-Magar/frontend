@@ -19,7 +19,7 @@ const PrivateRoute = () => {
             "Content-Type": "application/json",
           },
         });
-        if (response.ok) {
+        if (response.status === 200) {
           setLoggedIn(true);
         } else {
           setLoggedIn(false);
