@@ -20,7 +20,7 @@ const User = () => {
           <div className="space-y-10">
             <div className="py-6 px-4 flex justify-center items-center">
               <h2 className="text-xl font-bold">
-                <a href="/user/dashboard">Dashboard</a>
+                <a href="/user/dashboard">User Dashboard</a>
               </h2>
             </div>
             <div className="flex-1">

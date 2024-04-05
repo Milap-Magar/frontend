@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import validate from "../validation/validate";
 import Image from "../components/A-Componenets/Image";
-import loginImg from "../assets/login.png";
+// import loginImg from "../assets/login.png";
 import "./Login.css";
 
 import { IoMdLogIn } from "react-icons/io";

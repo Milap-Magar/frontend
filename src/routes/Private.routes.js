@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
-const PrivateRoute = () => {
+const PrivateRoute = ({user}) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -41,7 +41,7 @@ const PrivateRoute = () => {
     return <div>Loading...</div>; 
   }
 
-  return <>{loggedIn ? <Outlet /> : <Navigate to={"/"} />}</>;
+  return <>{loggedIn ? <Outlet user={user} /> : <Navigate to={"/"} />}</>;
 };
 
 export default PrivateRoute;
